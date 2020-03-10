@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["aceptar"]) {
            $Errmodelo = "Debe elegir al menos un modelo";
            $errores[]= $Errmodelo ;
        }elseif(!preg_match("/^([A-Za-zÑñ]+[áéíóú]?[A-Za-z]*){1,18}\s?([A-Za-zÑñ]+[áéíóú]?[A-Za-z]*){0,36}?[0-9]{0,5}$/iu",$Valmodelo)){
-           $Errmodelo = "Por favor introduzca un marca valida";
+           $Errmodelo = "Por favor introduzca un modelo valido";
            $errores[]= $Errmodelo;
        } else {
            $modelo = $Valmodelo;
@@ -215,7 +215,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST["aceptar"]) {
         <!-- modelo-->
         <div class="form-group <?php echo (!empty($Errmodelo)) ? 'error: ' : ''; ?>">
         <label>Modelo</label>
-        <input type="text" required name="modelo" maxlength="25" title="El modelo no puede contener números" value="<?php echo $Valmodelo; ?>">
+        <input type="text" required name="modelo" maxlength="25" pattern="^([A-Za-zÑñ]+[áéíóú]?[A-Za-z]*){1,18}?\s?([A-Za-zÑñ]+[áéíóú]?[A-Za-z]*){0,36}?[0-9]{0,5}$" title="El modelo no puede contener números intercalados" value="<?php echo $Valmodelo; ?>">
         <span class="help-block"><?php echo $Errmodelo;?></span> 
 </div>
 
